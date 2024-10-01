@@ -3,7 +3,7 @@ import ml5 from "ml5";
 
 import { HIDDEN } from "../shared/enums.js";
 
-/* global $, ga */
+/* global $ */
 
 export function hideAll() {
     $("#mainmenu").addClass(HIDDEN);
@@ -65,10 +65,8 @@ export const promptKickPlayer = (tappedPlayer, socket) => {
                 playerToKick: tappedPlayer,
             });
             swal("Done!", `${tappedPlayer.name} was kicked.`, "success");
-            ga("send", "event", "User list", "Host kick player");
         }
     );
-    ga("send", "event", "User list", "Host tap player");
 };
 
 export const promptReplaceBot = (tappedPlayer, socket) => {
@@ -93,10 +91,8 @@ export const promptReplaceBot = (tappedPlayer, socket) => {
                 `${tappedPlayer.name} was replaced with a bot.`,
                 "success"
             );
-            ga("send", "event", "User list", "Host replace player with a bot");
         }
     );
-    ga("send", "event", "User list", "Host tap player");
 };
 
 export function classify(image, isDoodle, socket) {
