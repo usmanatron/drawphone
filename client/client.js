@@ -39,7 +39,7 @@ if (relativeUrl === "/dev") {
 }
 
 const urlParams = new URLSearchParams(window.location.search);
-const isRocketcrab = urlParams.get("rocketcrab") === "true";
+const isRocketcrab = false;
 const name = urlParams.get("name");
 //const isHost = urlParams.get("ishost") === "true";
 const code = urlParams.get("code");
