@@ -26,17 +26,17 @@ class Results extends Screen {
 
         const chains = data;
 
-        this.render(chains[0], chains);
+        this.render(chains.chains[0], chains);
 
         super.show();
 
         if (!isArchivePage && !data.isViewPreviousResults) {
-            addResultsToStorage(chains);
+            addResultsToStorage(chains.chains);
         }
     }
 
     render(chainToShow, allChains) {
-        const chainNumber = allChains.indexOf(chainToShow);
+        const chainNumber = allChains.chains.indexOf(chainToShow);
 
         this.setTitle(`Results #${chainNumber + 1}`);
         const subtitle = `${chainToShow.owner.name} should present these results to the group!`;

@@ -17,17 +17,15 @@ class NewMenu extends Screen {
     initialize(props) {
         super.initialize(props);
 
-        this.backButton.click(this.onBack);
-        this.goButton.click(function () {
-            if (!this.isLoading) {
-                this.waitingForResponse(true);
-                const name = $("#newinname").val();
+        this.backButton.on("click", this.onBack);
+        this.goButton.on("click", () => {
+            this.waitingForResponse(true);
+            const name = $("#newinname").val();
 
-                this.socket.open();
-                this.socket.emit("newGame", {
-                    name,
-                });
-            }
+            this.socket.open();
+            this.socket.emit("newGame", {
+                name,
+            });
         });
     }
 }

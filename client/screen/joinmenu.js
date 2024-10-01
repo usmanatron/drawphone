@@ -18,19 +18,17 @@ class JoinMenu extends Screen {
     initialize(props) {
         super.initialize(props);
 
-        this.backButton.click(this.onBack);
-        this.goButton.click(function () {
-            if (!this.isLoading) {
-                this.waitingForResponse(true);
-                const code = $("#joinincode").val();
-                const name = $("#joininname").val();
+        this.backButton.on("click", this.onBack);
+        this.goButton.on("click", () => {
+            this.waitingForResponse(true);
+            const code = $("#joinincode").val();
+            const name = $("#joininname").val();
 
-                this.socket.open();
-                this.socket.emit("joinGame", {
-                    code,
-                    name,
-                });
-            }
+            this.socket.open();
+            this.socket.emit("joinGame", {
+                code,
+                name,
+            });
         });
 
         this.codeInput.on("input", () => {
