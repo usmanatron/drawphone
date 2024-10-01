@@ -63,7 +63,7 @@ class Game extends Screen {
             this.canvas.isBlank = false;
         });
 
-        doneButton.click(() => {
+        doneButton.on("click", () => {
             this.onDone();
         });
 

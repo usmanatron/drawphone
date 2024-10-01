@@ -20,12 +20,12 @@ class MainMenu extends Screen {
     initialize(props) {
         super.initialize(props);
 
-        this.joinButton.click(this.onJoin);
-        this.newButton.click(this.onNew);
-        this.archiveButton.click(() => {
+        this.joinButton.on("click", this.onJoin);
+        this.newButton.on("click", this.onNew);
+        this.archiveButton.on("click", () => {
             window.location.href = "/archive";
         });
-        this.howButton.click(() => {
+        this.howButton.on("click", () => {
             window.location.href = "/how-to-play";
         });
     }

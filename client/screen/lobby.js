@@ -60,7 +60,6 @@ class Lobby extends Screen {
         this.gameTimeDisplay.text("");
         this.wordPackDropdown.prop("selectedIndex", 0);
         this.wordPackDropdown.prop("disabled", false);
-
     }
 
     show(data) {
