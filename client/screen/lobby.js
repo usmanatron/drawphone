@@ -127,12 +127,7 @@ class Lobby extends Screen {
         }
 
         Screen.gameCode = res.gameCode;
-        if (this.rocketcrabMode) {
-            this.title = "Drawphone";
-        } else {
-            this.title = `Game Code: ${Screen.getGameCodeHTML()}`;
-        }
-
+        this.title = `Game Code: ${Screen.getGameCodeHTML()}`;
         this.subtitle = "Waiting for players...";
         if (res.event === "updatePlayerList" && res.data.players) {
             this.userList.update(res.data.players);

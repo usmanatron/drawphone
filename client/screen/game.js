@@ -78,12 +78,7 @@ class Game extends Screen {
 
     show() {
         super.show();
-
-        if (this.rocketcrabMode) {
-            this.setSubtitle("🚀🦀");
-        } else {
-            this.setSubtitle(`Game code: ${Screen.getGameCodeHTML()}`);
-        }
+        this.setSubtitle(`Game code: ${Screen.getGameCodeHTML()}`);
 
         //allow touch events on the canvas
         $("#game-drawing").css("pointer-events", "auto");

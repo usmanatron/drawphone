@@ -8,11 +8,9 @@ import Results from "./screen/results.js";
 import Waiting from "./screen/waiting.js";
 
 class Drawphone {
-    constructor({ socket, rocketcrabMode }) {
+    constructor({ socket }) {
         this.screens = [];
         this.socket = socket;
-        this.rocketcrabMode = rocketcrabMode;
-
         this.mainMenu = new MainMenu(
             () => {
                 //ran when Join Game button is pressed
@@ -62,10 +60,7 @@ class Drawphone {
 
     initializeAll() {
         this.screens.forEach((screen) => {
-            screen.initialize({
-                socket: this.socket,
-                rocketcrabMode: this.rocketcrabMode,
-            });
+            screen.initialize({ socket: this.socket });
         });
 
         this.attachSocketListeners();

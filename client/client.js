@@ -38,23 +38,7 @@ if (relativeUrl === "/dev") {
     });
 }
 
-const urlParams = new URLSearchParams(window.location.search);
-const isRocketcrab = false;
-const name = urlParams.get("name");
-//const isHost = urlParams.get("ishost") === "true";
-const code = urlParams.get("code");
-
-const rocketcrabMode = isRocketcrab && name && code;
-
-if (rocketcrabMode) {
-    socket.open();
-    socket.emit("joinGame", {
-        code,
-        name,
-    });
-}
-
-const drawphone = new Drawphone({ socket, rocketcrabMode });
+const drawphone = new Drawphone({ socket });
 drawphone.initializeAll();
 drawphone.begin();
 

@@ -16,9 +16,8 @@ class Screen {
         this.defaultSubtitle = "Telephone with pictures";
     }
 
-    initialize({ socket, rocketcrabMode }) {
+    initialize({ socket }) {
         this.socket = socket;
-        this.rocketcrabMode = rocketcrabMode;
     }
 
     show() {
