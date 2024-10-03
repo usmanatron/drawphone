@@ -9,7 +9,6 @@ import Chain from "./chain.js";
 import AIGuessQueue from "./ai-guess-queue.js";
 import DrawingLink from "./link/drawinglink.js";
 import WordLink from "./link/wordlink.js";
-import { sendResultsToAwsArchive } from "./aws-archive.js";
 import WordPacks from "./words.js";
 import { getNewTurnLimit } from "../../shared/util.js";
 
@@ -348,14 +347,6 @@ class Round {
                 ...(player.isHost ? { roundTime } : {}),
             })
         );
-
-        try {
-            if (this.shouldArchiveResultsToAws()) {
-                sendResultsToAwsArchive(chains, this.wordPackName);
-            }
-        } catch (error) {
-            console.log("aws upload failed");
-        }
     }
 
     findReplacementFor(player, gameCode) {
@@ -498,17 +489,6 @@ class Round {
             newChains.push(chain.getJson());
         });
         return newChains;
-    }
-
-    shouldArchiveResultsToAws() {
-        const isEnabled = false;
-        //process.env.ACCESS_KEY_ID && process.env.SECRET_ACCESS_KEY;
-        const isNoBots = this.players.reduce((acc, { isAi }) => acc && !isAi);
-        const isAllowedWordPack =
-            this.wordPackName &&
-            (this.wordPackName.includes("Simple") ||
-                this.wordPackName.includes("Advanced"));
-        return isEnabled && isNoBots && isAllowedWordPack;
     }
 
     validTurnLimit(enteredTurnLimit) {
