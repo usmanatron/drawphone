@@ -46,7 +46,7 @@ export async function renderArchive(drawphone) {
         button.addClass("btn btn-default prevresbtn");
 
         ((chains) => {
-            button.click(() => {
+            button.on("click", () => {
                 drawphone.results.show(
                     {
                         data: { chains },

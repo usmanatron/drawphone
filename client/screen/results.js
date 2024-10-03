@@ -26,7 +26,7 @@ class Results extends Screen {
 
         const chains = data;
 
-        this.render(chains.chains[0], chains);
+        this.render(chains.chains[0], chains.chains);
 
         super.show();
 
@@ -36,7 +36,7 @@ class Results extends Screen {
     }
 
     render(chainToShow, allChains) {
-        const chainNumber = allChains.chains.indexOf(chainToShow);
+        const chainNumber = allChains.indexOf(chainToShow);
 
         this.setTitle(`Results #${chainNumber + 1}`);
         const subtitle = `${chainToShow.owner.name} should present these results to the group!`;
@@ -104,7 +104,7 @@ class Results extends Screen {
             );
             button.addClass("btn btn-default btn-lg");
             ((thisChain, chainList) => {
-                button.click(() => {
+                button.on("click", () => {
                     this.render(thisChain, chainList);
 
                     //jump to top of the page
